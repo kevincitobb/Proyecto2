@@ -1,4 +1,35 @@
 <resources>
     <string name="app_name">Proyecto2</string>
     <string name="tvRegistrosNo">Agrega elementos</string>
+    <string name="tvDirector">Director</string>
+    <string name="tvGenre">Genero</string>
+    <string name="tvTitulo">Titulo</string>
+    <string name="btn_add">añade elemento</string>
+    <string name="ivGenreDes">Género de película</string>
+    <string name="ivHeader">imagen</string>
+    <string name="tilTitulo">Título</string>
+    <string name="tilYear">Año</string>
+    <string name="tilDirector">Director</string>
+    <string name="btAgregar">Agregar</string>
+    <string name="spTerror">Terror</string>
+    <string name="spAccion">Acción/Aventura</string>
+    <string name="spComedia">Comedia</string>
+    <string name="spDocumental">Documental</string>
+    <string name="vacio">No puede quedar vacío</string>
+    <string name="llenar">Por favor llene todos los campos</string>
+    <string name="exito">Registro guardado con exito</string>
+    <string name="fallo">Error al guardar elemento</string>
+    <string name="btnUpdate">Actualizar</string>
+    <string name="editar">Editar</string>
+    <string name="borrar">Borrar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmacion">Confirmación</string>
+    <string name="seguro_eliminar">" seguro de eliminar: %1$s"</string>
+    <string name="aceptar">Aceptar</string>
+    <string-array name="genres_array">
+        <item>@string/spTerror</item>
+        <item>@string/spAccion</item>
+        <item>@string/spComedia</item>
+        <item>@string/spDocumental</item>
+    </string-array>
 </resources>
