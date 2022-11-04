@@ -18,12 +18,12 @@ class InsertActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var binding: ActivityInsertBinding
     private var genres = ""
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInsertBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val spinner:Spinner = binding.spGenre
+
+        val spinner: Spinner = binding.spGenre
         spinner.onItemSelectedListener = this
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
@@ -37,45 +37,37 @@ class InsertActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             spinner.adapter = adapter
             spinner.setSelection(adapter.getPosition("Terror"))
         }
-
     }
 
     fun click(view: View) {
-        val dbMovies = DbMovies(this)
+        val dbMovie = DbMovies(this)
+
         with(binding){
             when{
-                tietTitle.text.toString().isEmpty() -> {
+                tietTitle.text.toString().isEmpty() ->{
                     tietTitle.error = resources.getString(R.string.vacio)
-
-                    Toast.makeText(this@InsertActivity, resources.getString(R.string.llenar), Toast.LENGTH_SHORT).show()
                 }
-                tietGenre.text.toString().isEmpty() -> {
-                    tietGenre.error = resources.getString(R.string.vacio)
-                    Toast.makeText(this@InsertActivity, resources.getString(R.string.llenar), Toast.LENGTH_SHORT).show()
-                }
-                tietDirector.text.toString().isEmpty() -> {
+                tietDirector.text.toString().isEmpty() ->{
                     tietDirector.error = resources.getString(R.string.vacio)
-                    Toast.makeText(this@InsertActivity, resources.getString(R.string.llenar), Toast.LENGTH_SHORT).show()
                 }
-                else -> {
-                    //Realizamos la inserción
-                    val id = dbMovies.insertMovie( tietTitle.text.toString(), tietGenre.text.toString().toInt(), tietDirector.text.toString(),spGenre.selectedItem as String)
-
+                tietGenre.text.toString().isEmpty() ->{
+                    tietGenre.error = resources.getString(R.string.vacio)
+                }
+                else ->{
+                    val id = dbMovie.insertMovie(tietTitle.text.toString(),tietGenre.text.toString().toInt(),tietDirector.text.toString(),spGenre.selectedItem as String)
                     if(id>0){
-                        Toast.makeText(this@InsertActivity, resources.getString(R.string.exito), Toast.LENGTH_SHORT).show()
                         tietTitle.setText("")
                         tietGenre.setText("")
                         tietDirector.setText("")
                         tietTitle.requestFocus()
+                        Toast.makeText(this@InsertActivity,resources.getString(R.string.exito),Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(this@InsertActivity, resources.getString(R.string.fallo), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@InsertActivity,resources.getString(R.string.fallo),Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
-
     }
-
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
         genres = parent.getItemAtPosition(pos).toString()
@@ -90,23 +82,26 @@ class InsertActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             parent.getItemAtPosition(2).toString() -> {
                 binding.ivGenre.setImageResource(R.drawable.comedia)
             }
-            parent.getItemAtPosition(3).toString() -> {
+            parent.getItemAtPosition(4).toString() -> {
                 binding.ivGenre.setImageResource(R.drawable.documental)
             }
             else ->{
-                binding.ivHeader.visibility = View.GONE
+                binding.ivGenre.visibility = View.GONE
             }
         }
     }
+
     override fun onNothingSelected(parent: AdapterView<*>) {
 
     }
 
-    override fun onBackPressed() {
+    override fun onBackPressed(){
         super.onBackPressed()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this,MainActivity::class.java))
     }
+
+    fun clickDelete(view: View) {}
+    fun clickEdit(view: View) {}
+    fun clickUpdate(view: View) {}
+
 }
-fun clickDelete(view: View) {}
-fun clickEdit(view: View) {}
-fun clickUpdate(view: View) {}

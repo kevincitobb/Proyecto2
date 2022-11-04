@@ -109,8 +109,7 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 tietDirector.error = resources.getString(R.string.vacio)
             }
                 else ->{
-                    val id_update = dbMovies.updateMovie(id,
-                        spGenreEdit.selectedItem as String,tietTitle.text.toString(),tietGenre.text.toString().toInt(),tietDirector.text.toString())
+                    val id_update = dbMovies.updateMovie(id, tietTitle.text.toString(),tietGenre.text.toString().toInt(),tietDirector.text.toString(), spGenreEdit.selectedItem as String)
                     if(id_update){
                         Toast.makeText(this@EditActivity,resources.getString(R.string.exito), Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@EditActivity,DetailActivity::class.java)

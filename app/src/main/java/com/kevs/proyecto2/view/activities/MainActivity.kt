@@ -24,10 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         listMovies = dbMovie.getMovie()
 
-        val carsAdapter = MoviesAdapter(this,listMovies)
+        val MoviesAdapter = MoviesAdapter(this,listMovies)
 
         binding.rvGames.layoutManager = LinearLayoutManager(this)
-        binding.rvGames.adapter = carsAdapter
+        binding.rvGames.adapter = MoviesAdapter
 
         if(listMovies.size == 0) binding.tvSinRegistros.visibility = View.VISIBLE
         else binding.tvSinRegistros.visibility = View.INVISIBLE

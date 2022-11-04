@@ -78,7 +78,7 @@ open class DbMovies(private val context: Context):DbHelper(context) {
         return Movie
     }
 
-    fun updateMovie(id: Int, title: String, year: String, director: Int, genre: String): Boolean{
+    fun updateMovie(id: Int, title: String, year: Int, director: String, genre: String): Boolean{
         var banderaCorrecto = false
 
         val dbHelper = DbHelper(context)
