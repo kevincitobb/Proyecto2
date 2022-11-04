@@ -49,10 +49,10 @@ class EditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             Movie?.let{
                 with(binding){
                     tietTitle.setText(it.title)
-                    tietGenre.setText(it.year)
-                    tietDirector.setText(it.director)
+                    tietGenre.setText(it.genre)
+                    tietDirector.setText(it.year)
                     for (i in 0 until spinner.count) {
-                        if (spinner.getItemAtPosition(i).toString().equals(it.genre)) {
+                        if (spinner.getItemAtPosition(i).toString().equals(it.director)) {
                             spinner.setSelection(i)
                             break
                         }

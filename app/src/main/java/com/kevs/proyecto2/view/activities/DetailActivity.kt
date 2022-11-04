@@ -54,16 +54,18 @@ class DetailActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
             Movie?.let{
                 with(binding){
 
+                    tietTitle.setText(it.title)
+                    tietGenre.setText(it.genre.toString())
+                    tietDirector.setText(it.year)
+
                     for (i in 0 until spinner.count) {
-                        if (spinner.getItemAtPosition(i).toString().equals(it.genre)) {
+                        if (spinner.getItemAtPosition(i).toString().equals(it.director)) {
                             spinner.setSelection(i)
                             break
                         }
                     }
 
-                    tietTitle.setText(it.title)
-                    tietGenre.setText(it.year)
-                    tietDirector.setText(it.director)
+
 
                     //desactivar teclado
                     tietTitle.inputType = InputType.TYPE_NULL
@@ -90,7 +92,7 @@ class DetailActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
     fun clickDelete(view: View) {
         AlertDialog.Builder(this)
             .setTitle(resources.getString(R.string.confirmacion))
-            .setMessage(resources.getString(R.string.seguro_eliminar,Movie?.genre))
+            .setMessage(resources.getString(R.string.seguro_eliminar,Movie?.title))
             .setPositiveButton(resources.getString(R.string.aceptar), DialogInterface.OnClickListener{
                     dialog,wich ->
                 if(dbMovies.deleteMovie(id)){
