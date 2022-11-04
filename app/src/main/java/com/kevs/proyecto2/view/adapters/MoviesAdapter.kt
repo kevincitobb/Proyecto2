@@ -17,7 +17,7 @@ class MoviesAdapter(private val context: Context, val movies: ArrayList<Movie>):
     class ViewHolder(view: ListElementBinding): RecyclerView.ViewHolder(view.root){
         val tvTitle = view.tvTitle
         val tvGenre = view.tvGenre
-        val tvDeveloper = view.tvDeveloper
+        val tvDirector = view.tvDeveloper
         val image = view.imageView
     }
 
@@ -30,7 +30,7 @@ class MoviesAdapter(private val context: Context, val movies: ArrayList<Movie>):
 
         holder.tvTitle.text = movies[position].title
         holder.tvGenre.text = movies[position].year.toString()
-        holder.tvDeveloper.text = movies[position].director
+        holder.tvDirector.text = movies[position].director
         when(movies[position].genre){
             "Terror" -> {
                 holder.image.setImageResource(R.drawable.terror)
